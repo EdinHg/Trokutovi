@@ -1,0 +1,65 @@
+WindowManager:
+    Output:
+        
+  
+
+            
+<Output>:
+    name: "output"
+    
+    FloatLayout:
+        
+        canvas:
+            Line:
+                points:  [220, 2090, 860, 2090, 860, 1450, 220, 1450, 220, 2090]
+                width: 10
+            Line:
+                points: root.linije
+                width: 7
+                
+        
+ 
+        Label:
+            text: "Današnji datum:   " + str(root.danas.strftime("%d.%m.%Y."))
+            size_hint: 0.3, 0.05
+            pos_hint: {"x":0.3, "y":0.45}
+                     
+        Label:
+            id: datum_output
+            text: "Datum rođenja: "
+            size_hint: 0.128, 0.05
+            pos_hint: {"x": 0.3, "y": 0.4}
+            
+            
+                  
+        TextInput:
+            id: datum_rodenja
+            text: "Unesi datum rođenja"
+            multiline: False
+            size_hint: 0.3, 0.025
+            pos_hint: {"x": 0.5, "y": 0.425-0.025/2}
+            
+         
+                
+        Button:        
+            text: "Calculate"
+            pos_hint: {"x": 0.5-0.15/2, "y": 0.1}
+            size_hint: 0.15, 0.05
+            on_release: 
+                root.calculate()
+                
+        Button:
+            text: "Previous"
+            pos_hint: {"x": 0.1, "y": 0.1}
+            size_hint: 0.2, 0.05
+            on_release: 
+                root.previous_day()
+                root.calculate()
+                
+        Button:
+            text: "Next"
+            pos_hint: {"x": 0.7, "y": 0.1}
+            size_hint: 0.2, 0.05
+            on_release: 
+                root.next_day()
+                root.calculate()
